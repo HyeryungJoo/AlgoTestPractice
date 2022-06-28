@@ -3,16 +3,12 @@ import java.util.Scanner;
 
 public class BOJ_2309 {
 
-	static int[] result, tall;
-	static boolean visit[];
+	static int[] result = new int[7];
+	static int[] tall = new int[9];
 
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-
-		tall = new int[9];
-		result = new int[7];
-		visit = new boolean[9];
 
 		for (int i = 0; i < 9; i++) {
 			tall[i] = sc.nextInt();
@@ -39,13 +35,9 @@ public class BOJ_2309 {
 			return;
 		}
 
-		for (int i = 0; i < 9; i++) {
-			if (!visit[i]) {
-				visit[i] = true;
-				result[cnt] = tall[i];
-				comb(i + 1, cnt + 1);
-				visit[i] = false;
-			}
+		for (int i = start; i < 9; i++) {
+			result[cnt] = tall[i];
+			comb(i + 1, cnt + 1);
 		}
 	}
 
