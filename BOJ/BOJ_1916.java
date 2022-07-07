@@ -12,6 +12,7 @@ public class BOJ_1916 {
 
 	static int n, m, start, end, ans[];
 	static ArrayList<Edge>[] list;
+	static boolean[] visit;
 
 	public static void main(String[] args) throws IOException {
 
@@ -22,6 +23,7 @@ public class BOJ_1916 {
 		n = Integer.parseInt(br.readLine());
 		m = Integer.parseInt(br.readLine());
 
+		visit = new boolean[n + 1];
 		list = new ArrayList[n + 1];
 		for (int i = 1; i <= n; i++)
 			list[i] = new ArrayList<>();
@@ -59,6 +61,10 @@ public class BOJ_1916 {
 
 			int curr = edge.to;
 
+			if (visit[curr])
+				continue;
+
+			visit[curr] = true;
 			for (Edge out : list[curr]) {
 				if (ans[out.to] > ans[curr] + out.weight) {
 					ans[out.to] = ans[curr] + out.weight;
