@@ -21,10 +21,22 @@ public class BOJ_2581 {
 			}
 		}
 
-		for (int i = 2; i <= 20; i++) {
-			if (!visit[i])
-				System.out.println(i);
+		int cnt = 0;
+		int sum = 0;
+		int min = Integer.MAX_VALUE;
+		for (int i = m; i <= n; i++) {
+			if (!visit[i]) {
+				if (i > 1) {
+					cnt++;
+					sum += i;
+					min = Math.min(min, i);
+				}
+			}
 		}
+		if (cnt == 0)
+			System.out.println(-1);
+		else
+			System.out.println(sum + "\n" + min);
 	}
 
 }
